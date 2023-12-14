@@ -164,3 +164,10 @@ const result =  await searchTransaction(bkashConfig, trxID)
 }
 const result =  await refundTransaction(bkashConfig, refundDetails)
 ```
+# Sandbox Testing Number,OTP & PIN
+ ```
+For Successful Payment:  01619777283 , 01877722345
+For Insufficient Payment: 01823074817
+OTP: 123456
+PIN: 12121
+```
