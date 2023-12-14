@@ -70,7 +70,7 @@ app.post("/bkash-checkout", async(req, res) => {
       reference : reference || '1'                                          // your reference
     }
     const result =  await createPayment(bkashConfig, paymentDetails)
-    res.send(result)
+    res.redirect(result?.bkashURL)
   } catch (e) {
     console.log(e)
   }
@@ -94,8 +94,7 @@ app.get("/bkash-callback", async(req, res) => {
       statusCode : result?.statusCode,
       statusMessage : result?.statusMessage
     }
-    // You may here use WebSocket, server-sent events, or other methods to notify your client
-    res.send(response)
+   res.redirect('your_frontend_route')  // Your frontend route
   } catch (e) {
     console.log(e)
   }
