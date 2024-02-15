@@ -2,7 +2,7 @@ const fetch = require("node-fetch")
 const authHeaders = require("../Action/authHeaders")
 
 const searchTransaction = async (bkashConfig, trxID) => {
-  const searchResponse = await fetch(bkashConfig?.base_url + "/tokenized/checkout/general/search/searchTransaction", {
+  const searchResponse = await fetch(bkashConfig?.base_url + "/tokenized/checkout/general/searchTransaction", {
     method: "POST",
     headers: await authHeaders(bkashConfig),
     body: JSON.stringify({
