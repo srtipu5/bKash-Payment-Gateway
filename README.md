@@ -2,12 +2,6 @@
 A Library to integrate bKash Payment Gateway on your backend application.
 Written in Javascript & covered all bKash Checkout (URL) API.
 
-# NPM Package Link
-
-```
-https://www.npmjs.com/package/bkash-payment
-
-```
 # NPM Install
 ```
 npm install bkash-payment
@@ -70,7 +64,7 @@ app.post("/bkash-checkout", async(req, res) => {
       reference : reference || '1'                                          // your reference
     }
     const result =  await createPayment(bkashConfig, paymentDetails)
-    res.redirect(result?.bkashURL)
+    res.send(result)
   } catch (e) {
     console.log(e)
   }
@@ -94,7 +88,8 @@ app.get("/bkash-callback", async(req, res) => {
       statusCode : result?.statusCode,
       statusMessage : result?.statusMessage
     }
-   res.redirect('your_frontend_route')  // Your frontend route
+    // You may use here WebSocket, server-sent events, or other methods to notify your client
+    res.send(response)
   } catch (e) {
     console.log(e)
   }
@@ -120,6 +115,16 @@ app.get("/bkash-search", async (req, res) => {
   try {
     const { trxID } = req.query
     const result = await searchTransaction(bkashConfig, trxID)
+    res.send(result)
+  } catch (e) {
+    console.log(e)
+  }
+})
+
+app.get("/bkash-query", async (req, res) => {
+  try {
+    const { paymentID } = req.query
+    const result = await queryPayment(bkashConfig, paymentID)
     res.send(result)
   } catch (e) {
     console.log(e)
@@ -163,11 +168,4 @@ const result =  await searchTransaction(bkashConfig, trxID)
  amount: 10
 }
 const result =  await refundTransaction(bkashConfig, refundDetails)
-```
-# Sandbox Testing Number,OTP & PIN
- ```
-For Successful Payment:  01619777283 , 01877722345
-For Insufficient Payment: 01823074817
-OTP: 123456
-PIN: 12121
 ```
