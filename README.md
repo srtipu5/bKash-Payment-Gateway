@@ -197,10 +197,10 @@ const { createAgreement, executeAgreement, cancelAgreement, createPaymentWithAgr
 
 ```
   const paymentDetails = {
-      amount: 10,                                      // your product price
-      callbackURL : 'http://127.0.0.1:3000/callback',  // your callback route
-      orderID : 'Order_101',                           // your orderID
-      reference : '1'                                  // your reference
+      amount: 10,                                                // your product price
+      callbackURL : 'http://127.0.0.1:3000/agreement-callback',  // your callback route
+      orderID : 'Order_101',                                     // your orderID
+      reference : '1'                                            // your reference
     }
 const result =  await createAgreement(bkashConfig, paymentDetails)
 ```
@@ -223,15 +223,15 @@ const result =  await cancelAgreement(bkashConfig, agreementID)
 const result =  await queryAgreement(bkashConfig, agreementID)
 ```
 
-# Create Payment
+# Create Payment With Agreement
 
 ```
   const paymentDetails = {
-      agreementID: "TokenizedMerchant01L3IKB6H1565072174986"    // agreementID from executeAgreement API
-      amount: 10,                                               // your product price
-      callbackURL : 'http://127.0.0.1:3000/callback',           // your callback route
-      orderID : 'Order_101',                                    // your orderID
-      reference : '1'                                           // your reference
+      agreementID: "TokenizedMerchant01L3IKB6H1565072174986"            // agreementID from executeAgreement API
+      amount: 10,                                                       // your product price
+      callbackURL : 'http://127.0.0.1:3000/payment-callback',           // your callback route
+      orderID : 'Order_101',                                            // your orderID
+      reference : '1'                                                   // your reference
     }
 const result =  await createPaymentWithAgreement(bkashConfig, paymentDetails)
 ```
@@ -273,10 +273,10 @@ const { createAuthPayment, executePayment, captureAuthPayment, voidAuthPayment, 
 
 ```
   const paymentDetails = {
-      amount: 10,                                      // your product price
-      callbackURL : 'http://127.0.0.1:3000/callback',  // your callback route
-      orderID : 'Order_101',                           // your orderID
-      reference : '1'                                  // your reference
+      amount: 10,                                           // your product price
+      callbackURL : 'http://127.0.0.1:3000/auth-callback',  // your callback route
+      orderID : 'Order_101',                                // your orderID
+      reference : '1'                                       // your reference
     }
 const result =  await createAuthPayment(bkashConfig, paymentDetails)
 ```
@@ -310,3 +310,4 @@ const result =  await queryPayment(bkashConfig, paymentID)
 ```
 const result =  await searchTransaction(bkashConfig, trxID)
 ```
+

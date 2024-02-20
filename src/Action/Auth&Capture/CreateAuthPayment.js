@@ -26,7 +26,7 @@ const createAuthPayment = async (bkashConfig, paymentDetails) => {
       }
     }
 
-    const createAuthResopnse = await fetch(bkashConfig?.base_url + "/tokenized/checkout/payment/create", {
+    const createAuthResopnse = await fetch(bkashConfig?.base_url + "/tokenized/checkout/create", {
       method: "POST",
       headers: await authHeaders(bkashConfig),
       body: JSON.stringify({
