@@ -1,5 +1,5 @@
 const fetch = require("node-fetch")
-const authHeaders = require("./AuthHeaders")
+const authHeaders = require("../AuthHeaders")
 
 const cancelAgreement = async (bkashConfig, agreementID) => {
   const cancelAgreementResponse = await fetch(bkashConfig?.base_url + "/tokenized/checkout/agreement/cancel", {

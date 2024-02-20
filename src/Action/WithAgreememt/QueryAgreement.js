@@ -1,5 +1,5 @@
 const fetch = require("node-fetch")
-const authHeaders = require("./AuthHeaders")
+const authHeaders = require("../AuthHeaders")
 
 const queryAgreement = async (bkashConfig, agreementID) => {
   const queryAgreementResponse = await fetch(bkashConfig?.base_url + "/tokenized/checkout/payment/status", {
