@@ -1,8 +1,8 @@
 const fetch = require("node-fetch")
 const { v4: uuidv4 } = require("uuid")
-const authHeaders = require("./authHeaders")
+const authHeaders = require("../AuthHeaders")
 
-const createPayment = async (bkashConfig, paymentDetails) => {
+const createAuthPayment = async (bkashConfig, paymentDetails) => {
   try {
     const { amount, callbackURL, orderID, reference } = paymentDetails
     if(!amount){
@@ -26,13 +26,13 @@ const createPayment = async (bkashConfig, paymentDetails) => {
       }
     }
 
-    const createResopnse = await fetch(bkashConfig?.base_url + "/tokenized/checkout/create", {
+    const createAuthResopnse = await fetch(bkashConfig?.base_url + "/tokenized/checkout/payment/create", {
       method: "POST",
       headers: await authHeaders(bkashConfig),
       body: JSON.stringify({
         mode: "0011",
         currency: "BDT",
-        intent: "sale",
+        intent: "authorization",
         amount: amount, 
         callbackURL: callbackURL,
         payerReference: reference || "1",
@@ -40,11 +40,11 @@ const createPayment = async (bkashConfig, paymentDetails) => {
       }),
     })
 
-    const createResult = await createResopnse.json()
-    return createResult
+    const createAuthResult = await createAuthResopnse.json()
+    return createAuthResult
   } catch (e) {
     return e
   }
 }
 
-module.exports = createPayment
+module.exports = createAuthPayment

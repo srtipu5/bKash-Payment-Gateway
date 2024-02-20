@@ -1,6 +1,6 @@
 const fetch = require("node-fetch")
-const tokenHeaders = require("./tokenHeaders")
-const tokenParameters = require("./tokenParameters")
+const tokenHeaders = require("./TokenHeaders")
+const tokenParameters = require("./TokenParameters")
 
 const grantToken = async (bkashConfig) => {
   try {

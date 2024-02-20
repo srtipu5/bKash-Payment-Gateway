@@ -1,4 +1,4 @@
-const grantToken = require("./grantToken")
+const grantToken = require("./GrantToken")
 
 const authHeaders = async (bkashConfig) => {  
   return {

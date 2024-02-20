@@ -1,5 +1,5 @@
 const fetch = require("node-fetch")
-const authHeaders = require("../Action/authHeaders")
+const authHeaders = require("./AuthHeaders")
 
 const searchTransaction = async (bkashConfig, trxID) => {
   const searchResponse = await fetch(bkashConfig?.base_url + "/tokenized/checkout/general/searchTransaction", {

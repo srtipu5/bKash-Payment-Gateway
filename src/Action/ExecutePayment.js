@@ -1,4 +1,4 @@
-const authHeaders = require("./authHeaders")
+const authHeaders = require("./AuthHeaders")
 const fetch = require("node-fetch")
 
 const executePayment = async (bkashConfig, paymentID) => {
