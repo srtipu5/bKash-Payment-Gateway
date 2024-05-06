@@ -1,17 +1,18 @@
-const fetch = require("node-fetch")
+const axios = require("axios")
 const authHeaders = require("../AuthHeaders")
 
 const queryAgreement = async (bkashConfig, agreementID) => {
-  const queryAgreementResponse = await fetch(bkashConfig?.base_url + "/tokenized/checkout/agreement/status", {
-    method: "POST",
-    headers: await authHeaders(bkashConfig),
-    body: JSON.stringify({
-        agreementID,
-    }),
-  })
+  const response = await axios.post(
+    `${bkashConfig?.base_url}/tokenized/checkout/agreement/status`,
+    {
+      agreementID,
+    },
+    {
+      headers: await authHeaders(bkashConfig),
+    }
+  )
   
-  const queryAgreementResult = await queryAgreementResponse.json()
-  return queryAgreementResult
+  return response?.data
 }
 
 module.exports = queryAgreement

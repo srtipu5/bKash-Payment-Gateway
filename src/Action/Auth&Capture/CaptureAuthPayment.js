@@ -1,17 +1,18 @@
-const fetch = require("node-fetch")
+const axios = require("axios")
 const authHeaders = require("../AuthHeaders")
 
 const captureAuthPayment = async (bkashConfig, paymentID) => {
-  const captureResponse = await fetch(bkashConfig?.base_url + "/tokenized/checkout/payment/confirm/capture", {
-    method: "POST",
-    headers: await authHeaders(bkashConfig),
-    body: JSON.stringify({
+  const response = await axios.post(
+    `${bkashConfig?.base_url}/tokenized/checkout/payment/confirm/capture`,
+    {
       paymentID,
-    }),
-  })
+    },
+    {
+      headers: await authHeaders(bkashConfig),
+    }
+  )
   
-  const captureResult = await captureResponse.json()
-  return captureResult
+  return response?.data
 }
 
 module.exports = captureAuthPayment

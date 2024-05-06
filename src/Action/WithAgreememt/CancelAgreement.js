@@ -1,17 +1,18 @@
-const fetch = require("node-fetch")
+const axios = require("axios")
 const authHeaders = require("../AuthHeaders")
 
 const cancelAgreement = async (bkashConfig, agreementID) => {
-  const cancelAgreementResponse = await fetch(bkashConfig?.base_url + "/tokenized/checkout/agreement/cancel", {
-    method: "POST",
-    headers: await authHeaders(bkashConfig),
-    body: JSON.stringify({
-        agreementID,
-    }),
-  })
+  const response = await axios.post(
+    `${bkashConfig?.base_url}/tokenized/checkout/agreement/cancel`,
+    {
+      agreementID,
+    },
+    {
+      headers: await authHeaders(bkashConfig),
+    }
+  )
   
-  const cancelAgreementResult = await cancelAgreementResponse.json()
-  return cancelAgreementResult
+  return response?.data
 }
 
 module.exports = cancelAgreement

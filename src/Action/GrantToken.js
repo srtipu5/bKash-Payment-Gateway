@@ -1,17 +1,19 @@
-const fetch = require("node-fetch")
+const axios = require("axios")
 const tokenHeaders = require("./TokenHeaders")
 const tokenParameters = require("./TokenParameters")
 
 const grantToken = async (bkashConfig) => {
   try {
-    const tokenResponse = await fetch(bkashConfig?.base_url + "/tokenized/checkout/token/grant", {
-      method: "POST",
-      headers: tokenHeaders(bkashConfig),
-      body: JSON.stringify(tokenParameters(bkashConfig)),
-    })
+
+    const response = await axios.post(
+      `${bkashConfig?.base_url}/tokenized/checkout/token/grant`,
+      tokenParameters(bkashConfig),
+      {
+        headers: tokenHeaders(bkashConfig),
+      }
+    )
     
-    const tokenResult = await tokenResponse.json()
-    return tokenResult?.id_token
+    return response?.data?.id_token
     
   } catch (e) {
     console.log(e)

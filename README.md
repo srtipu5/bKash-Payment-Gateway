@@ -1,6 +1,6 @@
 ## bKash Payment Gateway
 
-A Library to integrate bKash Payment Gateway on your backend application.
+A Library to integrate bKash Payment Gateway in your application.
 Covered bKash Checkout (URL), With & Without Agreement, Auth & Capture.
 
 # NPM Install
