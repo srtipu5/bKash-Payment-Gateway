@@ -20,10 +20,10 @@ yarn add bkash-payment
 ```
 const bkashConfig = {
   base_url : 'https://tokenized.sandbox.bka.sh/v1.2.0-beta',
-  username: 'sandboxTokenizedUser02',
-  password: 'sandboxTokenizedUser02@12345',
-  app_key: '4f6o0cjiki2rfm34kfdadl1eqq',
-  app_secret: '2is7hdktrekvrbljjh44ll3d9l1dtjo4pasmjvs5vl5qr3fug4b'
+  username: '01770618567',
+  password: 'D7DaC<*E*eG',
+  app_key: '0vWQuCRGiUX7EPVjQDr0EUAYtc',
+  app_secret: 'jcUNPBgbcqEDedNKdvE4G1cAK7D3hCjmJccNPZZBq96QIxxwAMEx'
  }
 ```
 
